@@ -12,6 +12,7 @@ Create a web app that will test the site speed of a given URL.  The web app shou
 - Code with the idea that this will be used later and will have new features added.
 - At least 1 Unit tests should be included.
 - At least 1 Integration tests should be included.
+- Demonstrate a build process that at least minifies your assets.
 
 ## What we are looking for
 - How easy it for others to take what you have and extend it / add new features
