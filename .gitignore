@@ -1,0 +1,7 @@
+# external packages
+node_modules
+bower_components
+
+# logs
+*.log
+npm-debug.log*

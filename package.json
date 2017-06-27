@@ -1,0 +1,34 @@
+{
+  "name": "labs-test-project",
+  "version": "1.0.0",
+  "description": "web app to test site speed metrics",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set DEBUG=labs-test-project & gulp start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/200even/labs-test-project.git"
+  },
+  "author": "Scott Ferguson <esfergus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/200even/labs-test-project/issues"
+  },
+  "homepage": "https://github.com/200even/labs-test-project#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify": "^1.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-nodemon": "^2.2.1",
+    "jshint": "^2.9.5"
+  }
+}
