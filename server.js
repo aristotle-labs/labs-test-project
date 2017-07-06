@@ -1,12 +1,11 @@
 'use strict';
 
-var debug = require('debug')('labs-test-project');
+var debug = require('debug')('server');
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var validurl = require('valid-url');
 var siteSpeed = require('./siteSpeed');
-var siteSeo = require('./siteSeo');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -24,6 +23,7 @@ app.route('/')
 app.route('/submit-url')
   .post(function (req, res) {
     var url = req.body.url;
+    var siteSpeedResults;
     debug('posted to submit-url route');
 
     //validate url
@@ -31,14 +31,12 @@ app.route('/submit-url')
       return res.send('URL invalid. Please check the url and try again.');
     }
 
-    //test site speed
-    var siteSpeedResults = siteSpeed(url);
-
-    //test seo
-    var siteSeoResults = siteSeo(url);    
-
-    //return results to user
-    res.send('Site Speed Results: ' + siteSpeedResults + ' \n Site SEO Results: ' + siteSeoResults);     
+    siteSpeed.getSpeedMetrics(url).then(function(result) {
+      res.send('Site Speed Results: ' + result);     
+    }, function(err){
+      debug('Error: ' + err);
+      res.send('Error: ' + err);
+    });    
   });
 
 app.listen(PORT, HOST);

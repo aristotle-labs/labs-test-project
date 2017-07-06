@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set DEBUG=labs-test-project & gulp start"
+    "start": "set DEBUG=server, siteSpeed & node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,10 @@
   "homepage": "https://github.com/200even/labs-test-project#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chrome-launcher": "^0.3.0",
     "debug": "^2.6.8",
     "express": "^4.15.3",
+    "lighthouse": "^2.2.1",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
