@@ -19,7 +19,13 @@ describe('Array', function() {
 describe('Unit Tests', function() {
     describe('Set Performance Metrics', function() {
         it('should return performance with a speedIndex value of "4,234"', function() {
-            var performance = siteSpeed.setPerformanceMetrics({"audits": { "speed-index-metric": {"displayValue": "4,234"}}});
+            var performance = siteSpeed.setPerformanceMetrics(
+                [{ttfb: 400, headers: 1}, 
+                    {"audits": 
+                        {"speed-index-metric": {"displayValue": "4,234"},
+                        "total-byte-weight": {"rawValue": 100000}}
+                    }
+                ]);
             assert.equal("4,234", performance.speedIndex);
         });
     });
