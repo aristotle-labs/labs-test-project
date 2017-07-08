@@ -1,7 +1,15 @@
+html {
+    font-size: 16px;
+}
 body {
     background-image: url("/images/particle_field.jpg");
-    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
 }
 h1,
 h3,
@@ -9,14 +17,28 @@ h4,
 p,
 span,
 li {
-    color: #F6DCDC;
+    color: #DCDCDC;
     font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
 }
 
 h2 {
-    color: #F6DCDC;
+    color: #DCDCDC;
     font-family: 'PT Sans', sans-serif;
+    font-size: 1.5rem;
     text-decoration: underline;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 .center {
@@ -125,4 +147,22 @@ h2 {
 .seo-container {
     border-top: 1px white solid;
     width: 90vw;
+}
+
+.disabled {
+    opacity: .1;
+    cursor: wait;
+}
+
+@media screen and (max-width: 899px) {
+    html {
+        height: 100%;
+    }
+    body {
+        background-size: 100% 100%;
+    }
+    .submit-button {
+        min-width: 50vw;
+        font-size: 1.7rem;
+    }
 }

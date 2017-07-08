@@ -51,7 +51,7 @@ gulp.task('watch', function() {
 
 gulp.task('minify', ['minify-html', 'minify-js', 'minify-css'])
 
-gulp.task('start', function () {
+gulp.task('start', ['minify'], function () {
   var stream = nodemon({ script: 'server.js'
           , ext: 'html js'
           , ignore: []
