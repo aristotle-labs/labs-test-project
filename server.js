@@ -9,6 +9,7 @@ var siteSpeed = require('./siteSpeed');
 var app = express();
 app.use(bodyParser.json()); // allows posting from test framework
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Constants
 const PORT = process.env.PORT || 3000;
@@ -18,14 +19,14 @@ const NAME = 'labs-test-project';
 // Routes
 app.route('/')
   .get(function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/views/index.min.html'));
   });
 
 app.route('/submit-url')
   .post(function (req, res) {
     var url = req.body.url;
     var siteSpeedResults;
-    debug('posted to submit-url route');
+    debug('posted to submit-url route ' + req.body);
 
     //validate url
     if (!validurl.isWebUri(url)) {
