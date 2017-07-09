@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Site Speed and SEO Test</title>
+    <link rel="stylesheet" href="/stylesheets/labs-test-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|PT+Sans" rel="stylesheet">    
+</head>
+<body ng-app="labsTest" ng-cloak>
+    <div ng-controller="performanceController as performanceCtrl">
+        <form id="performanceForm" name="performanceForm" class="center" ng-submit="performanceCtrl.submitUrl()">
+            <h1 class="text-center">{{performanceCtrl.urlHeading}}</h1>
+            <div class="url-input-div">
+                <input name="url" class="url-input" type="url" ng-model="performanceCtrl.url" placeholder="URL (ex. http://www.google.com)" required>
+            </div> 
+            <input class="submit-button" ng-class="{'disabled': performanceCtrl.hideSubmit}" type="submit" ng-disabled="performanceCtrl.hideSubmit" />
+        </form>
+        <h3 class="text-center" ng-show="performanceCtrl.hasError">Something went wrong. Please try submitting your url again.</h3>
+        <div class="results" ng-hide="!performanceCtrl.hasResults">
+            <div id="performanceMetrics">
+                <h2 class="text-center">Performance Results</h2>                
+                <div class="result-box">
+                    <h3>Time to First Byte</h3>
+                    <span class="perf-big">{{performanceCtrl.performance.firstByte}} ms</span>
+                </div>
+                <div class="result-box">
+                    <h3 class="tooltip">
+                        Speed Index
+                        <span class="tooltiptext">Speed Index shows how quickly the contents of a page are visibly populated.</span>
+                    </h3>
+                    <span class="perf-big">{{performanceCtrl.performance.speedIndex}} ms</span>
+                </div>
+                <div class="result-box">
+                    <h3>Total Page Size</h3>
+                    <span class="perf-big">{{performanceCtrl.performance.pageSize /1000 | number:1 }} kb</span>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="seoMetrics">
+                <h2 class="text-center">SEO Results</h2>
+                <div class="seo-container center">
+                    <h3 class="seo-item-title">H1 Headings</h3>
+                    <p>The H1 tag should convey what the page is about. It is important to use only one H1 tag per page to make it clear to search engines what theme of the page is.</p>                    
+                    <h4>Your Result: {{performanceCtrl.performance.h1Count}}</h4>
+                    <p ng-show="performanceCtrl.performance.h1Count == 1">Great work! Your page has exactly one H1 tag.</p>
+                    <p ng-show="performanceCtrl.performance.h1Count > 1">Your page has {{performanceCtrl.performance.h1Count}} tags. You should consider keeping only one H1 tag that describes the theme of the page.</p>
+                    <p ng-show="performanceCtrl.performance.h1Count < 1">Your should consider having at least one H1 tag that describes the theme of the page.</p>
+                </div>
+                <div class="seo-container center">
+                    <h3 class="seo-item-title">Title</h3>
+                    <p>The title of your site is meant to be a concise description of the site's content. It plays a critical role in SEO as the title is what is displayed on search engine results pages.</p>                    
+                    <h4>Your Title: "{{performanceCtrl.performance.title}}"</h4>
+                    <p>
+                        Your title is {{performanceCtrl.performance.title.length}} characters long. 
+                        Ideal page titles are less than 60 characters. 
+                        <span ng-show="performanceCtrl.performance.title.length < 60">Your title is in the ideal range.</span>
+                        <span ng-show="performanceCtrl.performance.title.length > 59">Your title may be too long to display properly on search results. Consider shortening the title.</span>
+                    </p>
+                </div>
+                <div class="seo-container center">
+                    <h3 class="seo-item-title">Meta Description</h3>
+                    <p>Meta description tags should contain concise descriptions of the website. 
+                        Although they are not generally tied to search rankings, they can be important in gaining user click-throughs and should be 
+                        treated as an advertising line for the site.</p>                    
+                    <p ng-show="!performanceCtrl.performance.metaDescription">Your site doesn't have a Meta Description. Consider adding one to help user click-throughs.</p>
+                    <h4 ng-show="performanceCtrl.performance.metaDescription.length > 0">Your Meta Description: "{{performanceCtrl.performance.metaDescription}}"</h4>
+                    <h4>Recommendations: </h4>
+                    <ul>
+                        <li ng-show="performanceCtrl.performance.metaDescription.length > 160">Shorten your description ({{performanceCtrl.performance.metaDescription.length}} characters). Search engines may cut off descriptions longer than 160 characters.</li>
+                        <li ng-show="performanceCtrl.performance.metaDescription.indexOf('&#8220;') > -1">Remove double quotes from your description. Some search engines will cut off the description at the first double quote if one appears.</li>
+                        <li ng-show="performanceCtrl.performance.metaKeywords != null && performanceCtrl.keywords.length == 0">
+                            Try to use at least one keyword from your keyword meta tag. 
+                            Your keywords: "{{performanceCtrl.performance.metaKeywords}}"
+                        </li>
+                        <li ng-show="performanceCtrl.keywords != null">
+                            You are using {{performanceCtrl.keywords.length}} of your keywords in your description. 
+                            <span ng-show="performanceCtrl.keywords.length > 2">Try not to stuff your description with keywords. </span>
+                            <span ng-show="performanceCtrl.keywords.length < 3">You seem to be using your keywords in the description appropriately. </span>
+                            It's best to try to use one or two of the keywords.
+                        </li>
+                        <li ng-show="performanceCtrl.performance.metaKeywords == null">
+                            Consider adding a keyword meta tag and using at least one keyword from the list.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script type="text/javascript" src="/javascripts/labs-test-bundle.min.js"></script>
+</body>
+</html>

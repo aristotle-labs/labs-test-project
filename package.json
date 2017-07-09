@@ -1,0 +1,44 @@
+{
+  "name": "labs-test-project",
+  "version": "1.0.0",
+  "description": "web app to test site speed metrics",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "set DEBUG=server, siteSpeed & node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/200even/labs-test-project.git"
+  },
+  "author": "Scott Ferguson <esfergus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/200even/labs-test-project/issues"
+  },
+  "homepage": "https://github.com/200even/labs-test-project#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chrome-launcher": "^0.3.0",
+    "chrome-remote-interface": "^0.24.0",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "lighthouse": "^2.2.1",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  }
+}

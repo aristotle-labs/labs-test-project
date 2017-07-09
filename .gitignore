@@ -1,0 +1,12 @@
+# external packages
+node_modules
+bower_components
+
+# logs
+*.log
+npm-debug.log*
+
+#minified files
+**/*.min.html
+public/stylesheets/labs-test-bundle.min.css
+public/javascripts/labs-test-bundle.min.js
