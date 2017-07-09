@@ -26,7 +26,7 @@ app.route('/submit-url')
   .post(function (req, res) {
     var url = req.body.url;
     var siteSpeedResults;
-    debug('posted to submit-url route ' + req.body);
+    debug('posted to submit-url route');
 
     //validate url
     if (!validurl.isWebUri(url)) {
@@ -35,6 +35,7 @@ app.route('/submit-url')
     }
 
     siteSpeed.getSpeedMetrics(url).then(function(result) {
+      debug("siteSpeed result: " + JSON.stringify(result));
       res.send(result);     
     }, function(err){
       debug('Error: ' + err);

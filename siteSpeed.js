@@ -62,7 +62,6 @@ module.exports = {
     getSpeedMetrics: function(url) {
         debug("Launching Chrome.")
         return chromeLauncher.launch({
-            port: 9222,
             chromeFlags: ['--headless', '--disable-gpu', '--host-rules MAP * 127.0.0.1, EXCLUDE localhost'],
         }).then((chrome) => {
             var lighthouseOptions = {
@@ -81,6 +80,10 @@ module.exports = {
                     chrome.kill();
                     return err;                
                 });
+        }).catch(err => {
+            debug("Error: " + err);
+                    chrome.kill();
+                    return err;                
         });
     }    
 }
